@@ -9,17 +9,16 @@ const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const MongoStore = require('connect-mongo')(session);
-const sassMiddleware = require('node-sass-middleware');
+const sassMiddleware =require('node-sass-middleware');
+
 
 app.use(sassMiddleware({
-    src: './assests/scss',
-    dest: './assests/css',
+    src: './assets/scss',
+    dest: './assets/css',
     debug: true,
     outputStyle: 'extended',
     prefix: '/css'
 }));
-
-
 app.use(express.urlencoded());
 
 app.use(cookieParser());
@@ -71,8 +70,8 @@ app.use('/', require('./routes'));
 
 app.listen(port, function(err){
     if (err){
-        console.log('Error in running the server: ${err}');
+        console.log(`Error in running the server: ${err}`);
     }
 
-    console.log('Server is running on port: ${port}');
+    console.log(`Server is running on port: ${port}`);
 });
